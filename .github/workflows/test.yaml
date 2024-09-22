@@ -23,7 +23,7 @@ jobs:
 
 
     - name: Install Google API Client Library
-        run: pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+      run: pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
     - name: Download Google Sheet
       run: python download_sheet.py
