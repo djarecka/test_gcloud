@@ -1,3 +1,10 @@
+name: testing google-github-actions
+
+on:
+  push:
+
+
+
 jobs:
   job_id:
     # Add "id-token" with the intended permissions.
