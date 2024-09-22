@@ -20,3 +20,10 @@ jobs:
       with:
         project_id: 'gsheet-bican'
         workload_identity_provider: 'projects/497900577721/locations/global/workloadIdentityPools/github/providers/my-repo-1'
+
+
+    - name: Install Google API Client Library
+        run: pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+    - name: Download Google Sheet
+      run: python download_sheet.py
