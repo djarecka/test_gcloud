@@ -22,7 +22,7 @@ jobs:
         token_format: 'access_token'
         project_id: 'gsheet-bican'
         workload_identity_provider: 'projects/497900577721/locations/global/workloadIdentityPools/github/providers/my-repo-1'
-	service_account: "bican-gsheet-service@gsheet-bican.iam.gserviceaccount.com"
+	service_account: 'bican-gsheet-service@gsheet-bican.iam.gserviceaccount.com'
 
     - id: 'access-secret'
       run: |-
