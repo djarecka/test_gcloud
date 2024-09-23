@@ -26,7 +26,7 @@ jobs:
 
     - id: 'access-secret'
       run: |-
-        curl https://secretmanager.googleapis.com/v1/projects/gsheet-bican/secrets/my-secret/versions/1:access \
+        curl https://secretmanager.googleapis.com/v1/projects/gsheet-bican/secrets/my-secret:access \
           --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}"
 
 
