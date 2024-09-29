@@ -32,7 +32,7 @@ jobs:
 
     - id: 'download'
       run: |-
-        curl "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/values/Sheet1!A1:A5"
+        curl "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/values/Sheet1!A1:A5" \
           --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}"
 
 
