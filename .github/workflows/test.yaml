@@ -40,7 +40,7 @@ jobs:
       run: |-
         curl "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/revisions/7/export?mimeType=text/tab-separated-values" \
           --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-	  -o sheet_data_revision.tsv
+          -o sheet_data_revision.tsv
         cat sheet_data_revision.tsv
 
 #    - name: Install Google API Client Library
