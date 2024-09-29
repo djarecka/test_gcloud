@@ -20,7 +20,8 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         token_format: 'access_token'
-        project_id: 'gsheet-bican'
+	access_token_scopes: 'https://www.googleapis.com/auth/spreadsheets','https://www.googleapis.com/auth/cloud-platform'
+	project_id: 'gsheet-bican'
         workload_identity_provider: 'projects/497900577721/locations/global/workloadIdentityPools/github/providers/my-repo-1'
         service_account: 'bican-gsheet-service@gsheet-bican.iam.gserviceaccount.com'
 
