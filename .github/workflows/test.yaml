@@ -44,6 +44,15 @@ jobs:
 #        cat sheet_data_revision.tsv
 
 
+    - name: Upload Downloaded File
+      uses: actions/upload-artifact@v2
+      with:
+        name: downloaded_file
+        path: |
+          revisions.json
+          sheet_data_revision.xlsx
+
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -52,8 +61,8 @@ jobs:
     - name: Install Python dependencies
       run: pip install openpyxl
 
-    - name: Display Excel File Content
-      run: python read_excel.py
+#    - name: Display Excel File Content
+#      run: python read_excel.py
 
 #    - name: Install Google API Client Library
 #      run: pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
