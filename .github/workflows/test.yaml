@@ -29,6 +29,11 @@ jobs:
       if: ${{ steps.auth.outputs.access_token != '' }}
       run: echo "Output exists"
 
+    - name: List Revisions of Google Sheet
+      run: |
+        curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
+          "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/revisions" > revisions.json
+        cat revisions.json
 
 
     - id: 'download'
