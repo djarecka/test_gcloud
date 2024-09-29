@@ -24,10 +24,16 @@ jobs:
         workload_identity_provider: 'projects/497900577721/locations/global/workloadIdentityPools/github/providers/my-repo-1'
         service_account: 'bican-gsheet-service@gsheet-bican.iam.gserviceaccount.com'
 
-    - id: 'access-secret'
-      run: |-
-        curl https://secretmanager.googleapis.com/v1/projects/gsheet-bican/secrets/my-secret:access \
-          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}"
+    - name: Check if Output Exists
+      if: ${{ steps.auth.outputs.access_token != '' }}
+      run: echo "Output exists"
+
+
+
+#    - id: 'access-secret'
+#      run: |-
+#        curl https://secretmanager.googleapis.com/v1/projects/gsheet-bican/secrets/my-secret:access \
+#          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}"
 
 
 #    - name: Install Google API Client Library
