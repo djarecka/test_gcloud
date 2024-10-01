@@ -35,6 +35,7 @@ jobs:
           "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/revisions" > revisions.json
         cat revisions.json
 
+
     - name: List Sheets and download all
       run: |
         curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
@@ -77,6 +78,9 @@ jobs:
 
     - name: Install Python dependencies
       run: pip install openpyxl
+
+    - name: running script
+      run: python script_download.py --token ${{ steps.auth.outputs.access_token }} 
 
 #    - name: Display Excel File Content
 #      run: python read_excel.py
