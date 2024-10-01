@@ -1,5 +1,5 @@
 import argparse
-import request
+import requests
 
 # Set up the argument parser
 parser = argparse.ArgumentParser()
