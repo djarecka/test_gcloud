@@ -2,6 +2,10 @@ import argparse
 import requests
 import csv
 
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+
+
 # Set up the argument parser
 parser = argparse.ArgumentParser()
 parser.add_argument('--token', required=True, help='Access token for Google API')
@@ -24,6 +28,11 @@ url = f'https://sheets.googleapis.com/v4/spreadsheets/{SPREADSHEET_ID}/values/{S
 headers = {
     'Authorization': f'Bearer {access_token}'
 }
+
+service = build('sheets', 'v4', credentials=access_token)
+# Get the spreadsheet metadata
+spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+
 
 # Step 1: Retrieve the data from the Google Sheet
 response = requests.get(url, headers=headers)
