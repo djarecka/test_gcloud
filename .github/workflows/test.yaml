@@ -40,13 +40,13 @@ jobs:
         curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
           "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg" > sheet_metadata.json
         echo "sheet metadata read"
-        for sheet_name in $(jq -r '.sheets[].properties.title' sheet_metadata.json); do
-          echo "Downloading sheet: $sheet_name"
+        for sheet_id in $(jq -r '.sheets[].properties.sheetId' sheet_metadata.json); do
+          echo "Downloading sheet: $sheet_id"
           curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-              "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=$sheet_name" \
-              -o "google_spreadsheet_$sheet_name.csv"
-          echo $sheet_name
-          cat "google_spreadsheet_$sheet_name.csv"
+              "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/values/$sheet_id:batchGet?alt=csv" \
+              -o "google_spreadsheet_$sheet_id.csv"
+          echo $sheet_id
+          cat "google_spreadsheet_$sheet_id.csv"
           done
 
 
