@@ -38,7 +38,7 @@ jobs:
     - name: List Sheets
       run: |
         curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-          "https://sheets.googleapis.com/v4/spreadsheets/$file_id" > sheet_metadata.json
+          "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg" > sheet_metadata.json
         cat sheet_metadata.json
 
     - id: 'download'
