@@ -69,7 +69,7 @@ jobs:
         path: |
           revisions.json
           sheet_metadata.json
-	  results*
+          results*.tsv
 
 
     - name: Set up Python
