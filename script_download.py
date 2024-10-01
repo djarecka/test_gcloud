@@ -42,7 +42,7 @@ for sheet in sheets:
     title = sheet['properties']['title']
     sheet_id = sheet['properties']['sheetId']
     print(f"Sheet name: {title}, Sheet ID: {sheet_id}")
-    result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=title).execute()
+    result = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID, range=title).execute()
     values = result.get('values', [])
     with open(f'results_{title}.tsv', 'w', newline='') as tsv_file:
         writer = csv.writer(tsv_file, delimiter='\t')  # Use '\t' as the delimiter for TSV
