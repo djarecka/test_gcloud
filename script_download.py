@@ -32,7 +32,16 @@ headers = {
 creds = Credentials(token=access_token)
 service = build('sheets', 'v4', credentials=creds)
 # Get the spreadsheet metadata
-spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+spreadsheet = service.spreadsheets().get(spreadsheetId=SPREADSHEET_ID).execute()
+
+# Retrieve sheet names and IDs
+sheets = spreadsheet.get('sheets', [])
+    
+# List all sheets and their properties
+for sheet in sheets:
+    title = sheet['properties']['title']
+    sheet_id = sheet['properties']['sheetId']
+    print(f"Sheet name: {title}, Sheet ID: {sheet_id}")
 
 
 # Step 1: Retrieve the data from the Google Sheet
