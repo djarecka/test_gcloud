@@ -51,13 +51,13 @@ jobs:
 
 
 
-#    - id: 'download'
-#      name: Downloading sheets
-#      run: |-
-#        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1_tmp" \
-#          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-#          -o google_spreadsheet.csv
-#        cat google_spreadsheet.csv
+    - id: 'download'
+      name: Downloading one sheet
+      run: |-
+        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet2" \
+          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
+          -o google_spreadsheet.csv
+        cat google_spreadsheet.csv
 
 
     - name: Upload Downloaded File
