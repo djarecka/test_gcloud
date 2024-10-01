@@ -39,7 +39,7 @@ jobs:
       run: |
         curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
           "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg" > sheet_metadata.json
-
+        echo "sheet metadata read"
         for sheet_name in $(jq -r '.sheets[].properties.title' sheet_metadata.json); do
           echo "Downloading sheet: $sheet_name"
           curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
