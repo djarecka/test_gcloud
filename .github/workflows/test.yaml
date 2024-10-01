@@ -69,6 +69,7 @@ jobs:
         path: |
           revisions.json
           sheet_metadata.json
+	  results*
 
 
     - name: Set up Python
