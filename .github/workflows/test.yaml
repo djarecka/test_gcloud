@@ -62,16 +62,6 @@ jobs:
         cat google_spreadsheet.csv
 
 
-    - name: Upload Downloaded File
-      uses: actions/upload-artifact@v4
-      with:
-        name: downloaded_file
-        path: |
-          revisions.json
-          sheet_metadata.json
-          results*.tsv
-
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -85,6 +75,17 @@ jobs:
 
     - name: cat
       run: cat sheet_data.csv
+
+    - name: Upload Downloaded File
+      uses: actions/upload-artifact@v4
+      with:
+        name: downloaded_file
+        path: |
+          revisions.json
+          sheet_metadata.json
+          results*.tsv
+
+
 
 #    - name: Display Excel File Content
 #      run: python read_excel.py
