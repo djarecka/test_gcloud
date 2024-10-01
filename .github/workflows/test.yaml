@@ -35,19 +35,30 @@ jobs:
           "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/revisions" > revisions.json
         cat revisions.json
 
-    - name: List Sheets
+    - name: List Sheets and download all
       run: |
         curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
           "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg" > sheet_metadata.json
-        cat sheet_metadata.json
 
-    - id: 'download'
-      name: Downloading sheets
-      run: |-
-        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1_tmp" \
-          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-          -o google_spreadsheet.csv
-        cat google_spreadsheet.csv
+      # Extract the sheet names and download each sheet as CSV
+        for sheet_name in $(jq -r '.sheets[].properties.title' sheet_metadata.json); do
+          echo "Downloading sheet: $sheet_name"
+          curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
+              "https://www.googleapis.com/drive/v3/files/$file_id/export?mimeType=text/csv&sheet=$sheet_name" \
+              -o "google_spreadsheet_$sheet_name.csv"
+          echo $sheet_name
+          cat "google_spreadsheet_$sheet_name.csv"
+          done
+
+
+
+#    - id: 'download'
+#      name: Downloading sheets
+#      run: |-
+#        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1_tmp" \
+#          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
+#          -o google_spreadsheet.csv
+#        cat google_spreadsheet.csv
 
 
     - name: Upload Downloaded File
