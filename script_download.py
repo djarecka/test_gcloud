@@ -1,5 +1,6 @@
 import argparse
 import requests
+import csv
 
 # Set up the argument parser
 parser = argparse.ArgumentParser()

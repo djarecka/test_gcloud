@@ -77,10 +77,13 @@ jobs:
         python-version: '3.x'
 
     - name: Install Python dependencies
-      run: pip install requests argparse
+      run: pip install requests argparse csv
 
     - name: running script
       run: python script_download.py --token ${{ steps.auth.outputs.access_token }} 
+
+    - name: cat
+      run: cat sheet_data.csv
 
 #    - name: Display Excel File Content
 #      run: python read_excel.py
