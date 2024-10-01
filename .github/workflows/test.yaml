@@ -77,7 +77,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install Python dependencies
-      run: pip install openpyxl request argparse
+      run: pip install requests argparse
 
     - name: running script
       run: python script_download.py --token ${{ steps.auth.outputs.access_token }} 
