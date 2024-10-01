@@ -29,7 +29,8 @@ headers = {
     'Authorization': f'Bearer {access_token}'
 }
 
-service = build('sheets', 'v4', credentials=access_token)
+creds = Credentials(token=access_token)
+service = build('sheets', 'v4', credentials=creds)
 # Get the spreadsheet metadata
 spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
 
