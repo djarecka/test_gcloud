@@ -55,7 +55,7 @@ jobs:
     - id: 'download'
       name: Downloading one sheet
       run: |-
-        curl "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/values/Sheet2" \
+        curl "https://sheets.googleapis.com/v4/spreadsheets/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/values/Sheet1_tmp" \
           --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
           -o google_spreadsheet.csv
         cat google_spreadsheet.csv
