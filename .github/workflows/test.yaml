@@ -38,7 +38,7 @@ jobs:
 
     - id: 'download'
       run: |-
-        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1" \ #"https://docs.google.com/spreadsheets/export?id=1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg&revision=7&exportFormat=xlsx" \
+        curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1" \
           --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
           -o google_spreadsheet.csv
 #          -o sheet_data_revision.xlsx
