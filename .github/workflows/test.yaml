@@ -35,6 +35,12 @@ jobs:
           "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/revisions" > revisions.json
         cat revisions.json
 
+    - name: List Sheets
+      run: |
+        curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
+          "https://sheets.googleapis.com/v4/spreadsheets/$file_id" > sheet_metadata.json
+        cat sheet_metadata.json
+
     - id: 'download'
       run: |-
         curl "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?mimeType=text/csv&sheet=Sheet1" \
