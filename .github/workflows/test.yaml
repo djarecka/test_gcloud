@@ -43,7 +43,7 @@ jobs:
         for sheet_id in $(jq -r '.sheets[].properties.sheetId' sheet_metadata.json); do
           echo "Downloading sheet: $sheet_id"
           curl -H "Authorization: Bearer ${{ steps.auth.outputs.access_token }}" \
-              "https://www.googleapis.com/drive/v3/files/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?format=tsv&gid={sheet_id}" \
+              "https://docs.google.com/spreadsheets/d/1gFPuDW8U_LvKiyQ1B6LqMh0E7REEy68lxR914bkhMMg/export?format=tsv&gid={sheet_id}" \
               -o "google_spreadsheet_$sheet_id.tsv"
           echo $sheet_id
           cat "google_spreadsheet_$sheet_id.tsv"
